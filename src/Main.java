@@ -10,6 +10,7 @@ void main() {
     System.out.print("Enter Last Name: ");
     userAccount.setLastName(scanner.nextLine());
 
+    // Registration loop for username validation
     do {
         System.out.print("Enter Username: ");
         userAccount.setUsername(scanner.nextLine());
@@ -21,7 +22,7 @@ void main() {
         }
     }while (!userAccount.checkUserName());
 
-
+    // Registration loop for password validation
     do {
         System.out.print("Enter Password: ");
         userAccount.setPassword(scanner.nextLine());
@@ -34,7 +35,7 @@ void main() {
     }while (!Login.checkPasswordComplexity(userAccount.password));
 
 
-
+    // Registration loop for phone number validation
     do {
         System.out.print("Enter Cell Phone Number (e.g., +27838968976): ");
         userAccount.setCellNumber(scanner.nextLine());
