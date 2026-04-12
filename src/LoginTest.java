@@ -20,18 +20,12 @@ public class LoginTest {
 
     @Test
     public void testCheckPasswordValid() {
-        Login login = new Login();
-
-        login.password = "Ch&&sec@ke99!";
-        assertTrue(login.checkPasswordComplexity("Ch&&sec@ke99!"));
+        assertTrue(Login.checkPasswordComplexity("Ch&&sec@ke99!"));
     }
 
     @Test
     public void testCheckPasswordInvalid() {
-        Login login = new Login();
-
-        login.password = "password";
-        assertFalse(login.checkPasswordComplexity("password"));
+        assertFalse(Login.checkPasswordComplexity("password"));
     }
 
     @Test
