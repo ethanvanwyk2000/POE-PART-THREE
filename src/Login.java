@@ -23,7 +23,7 @@ public class Login {
         boolean hasUpperCase = false;
         boolean hasNumber = false;
         boolean hasSpecial = false;
-
+        // Checks if the password has an uppercase letter, number, special character, and is at least 8 characters long.
         for (char c : password.toCharArray()){
             if (Character.isUpperCase(c)){
                 hasUpperCase = true;
@@ -63,7 +63,7 @@ public class Login {
     // Returns necessary messaging for a successful or failed login
     public String returnLoginStatus(boolean loginSuccess) {
         if (loginSuccess) {
-            return "Welcome " + firstName +" " + lastName + " it is great to see you again.";
+            return "Welcome " + firstName +" " + lastName + " ,it's great to see you again.";
         } else {
             return "Failed login";
         }
