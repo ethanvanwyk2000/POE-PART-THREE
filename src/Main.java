@@ -65,5 +65,7 @@ void main() {
         // Check credentials and display final login status
         boolean isSuccess = userAccount.loginUser(loginUser, loginPass);
         System.out.println(userAccount.returnLoginStatus(isSuccess));
+
+        scanner.close();
     }
 }
