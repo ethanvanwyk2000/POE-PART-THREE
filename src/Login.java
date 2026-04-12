@@ -53,8 +53,6 @@ public class Login {
         }
     }
 
-
-
     // Verifies if login details match stored registration details
     public boolean loginUser(String enteredUser, String enteredPass) {
         return enteredUser.equals(this.username) && enteredPass.equals(this.password);
