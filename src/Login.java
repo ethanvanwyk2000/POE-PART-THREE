@@ -39,7 +39,7 @@ public class Login {
     // Regex-based cell phone checker for international code and length
     // Matches the test data +27838968976
     public boolean checkCellPhoneNumber() {
-        return cellNumber.matches("\\+27\\d{9}") || cellNumber.matches("0\\d{9}");
+        return !cellNumber.matches("\\+27\\d{9}") && !cellNumber.matches("0\\d{9}");
     }
 
     // Returns the specific registration messages

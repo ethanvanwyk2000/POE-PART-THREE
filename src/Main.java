@@ -27,12 +27,12 @@ void main() {
         System.out.print("Enter Password: ");
         userAccount.setPassword(scanner.nextLine());
 
-        if (userAccount.checkPasswordComplexity(userAccount.password)){
+        if (!userAccount.checkPasswordComplexity(userAccount.password)){
             System.out.println("Password is not formatted correctly, make sure contains a symbol and a capital letter");
         }else {
             System.out.println("Password captured");
         }
-    }while (userAccount.checkPasswordComplexity(userAccount.password));
+    }while (!userAccount.checkPasswordComplexity(userAccount.password));
 
 
     // Registration loop for phone number validation
@@ -40,12 +40,12 @@ void main() {
         System.out.print("Enter Cell Phone Number (e.g., +27838968976): ");
         userAccount.setCellNumber(scanner.nextLine());
 
-        if (!userAccount.checkCellPhoneNumber()){
+        if (userAccount.checkCellPhoneNumber()){
             System.out.println("Number not entered correctly or does not contain international code");
         }else {
             System.out.println("Number captured successful");
         }
-    }while (!userAccount.checkCellPhoneNumber());
+    }while (userAccount.checkCellPhoneNumber());
 
 
     // Process registration and display status
