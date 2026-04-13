@@ -19,7 +19,7 @@ public class Login {
     }
 
     // Ensures password meets the 4 complexity rules
-    public static boolean checkPasswordComplexity(String password){
+    public boolean checkPasswordComplexity(String password){
         boolean hasUpperCase = false;
         boolean hasNumber = false;
         boolean hasSpecial = false;

@@ -27,12 +27,12 @@ void main() {
         System.out.print("Enter Password: ");
         userAccount.setPassword(scanner.nextLine());
 
-        if (!Login.checkPasswordComplexity(userAccount.password)){
+        if (userAccount.checkPasswordComplexity(userAccount.password)){
             System.out.println("Password is not formatted correctly, make sure contains a symbol and a capital letter");
         }else {
             System.out.println("Password captured");
         }
-    }while (!Login.checkPasswordComplexity(userAccount.password));
+    }while (userAccount.checkPasswordComplexity(userAccount.password));
 
 
     // Registration loop for phone number validation
