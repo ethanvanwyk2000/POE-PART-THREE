@@ -1,7 +1,7 @@
 void main() {
     Scanner scanner = new Scanner(System.in);
     Login userAccount = new Login();
-
+    System.out.println();
     // --- REGISTRATION PHASE ---
     System.out.println("--- REGISTRATION ---");
     System.out.print("Enter First Name: ");
