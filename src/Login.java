@@ -19,21 +19,11 @@ public class Login {
     }
 
     // Ensures password meets the 4 complexity rules
-    public boolean checkPasswordComplexity(String password){
-        boolean hasUpperCase = false;
-        boolean hasNumber = false;
-        boolean hasSpecial = false;
-        // Checks if the password has an uppercase letter, number, special character, and is at least 8 characters long.
-        for (char c : password.toCharArray()){
-            if (Character.isUpperCase(c)){
-                hasUpperCase = true;
-            } else if (Character.isDigit(c)) {
-                hasNumber = true;
-            } else if (!Character.isLetterOrDigit(c)) {
-                hasSpecial = true;
-            }
-        }
-        return password.length() >= 8 && hasUpperCase && hasNumber && hasSpecial;
+    public boolean checkPasswordComplexity(String password) {
+        return password.length() >= 8 &&
+                password.matches(".*[A-Z].*") &&
+                password.matches(".*[0-9].*") &&
+                password.matches(".*[!@#$%^&*()].*");
     }
 
     // Regex-based cell phone checker for international code and length
@@ -67,4 +57,3 @@ public class Login {
         }
     }
 }
-
