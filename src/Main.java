@@ -1,6 +1,7 @@
 void main() {
     Scanner scanner = new Scanner(System.in);
     Login userAccount = new Login();
+    Message message = new Message();
 
     // --- REGISTRATION PHASE ---
     System.out.println("--- REGISTRATION ---");
@@ -67,6 +68,10 @@ void main() {
         boolean isSuccess = userAccount.loginUser(loginUser, loginPass);
         System.out.println(userAccount.returnLoginStatus(isSuccess));
 
-        scanner.close();
+        if (isSuccess){
+            message.sentMessage();
+        }
+
+
     }
 }

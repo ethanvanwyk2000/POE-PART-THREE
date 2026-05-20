@@ -51,7 +51,7 @@ public class Login {
     // Returns necessary messaging for a successful or failed login
     public String returnLoginStatus(boolean loginSuccess) {
         if (loginSuccess) {
-            return "Welcome " + firstName +" " + lastName + " ,it's great to see you again.";
+            return "Welcome " + firstName +" " + lastName + " ,it's great to see you again.\n";
         } else {
             return "Failed login";
         }
