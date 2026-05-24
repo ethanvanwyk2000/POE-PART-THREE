@@ -1,4 +1,4 @@
-name: Java Unit Tests (Non-Maven)
+name: Java Tests (JUnit 5)
 
 on:
   push:
@@ -19,10 +19,12 @@ jobs:
           java-version: 17
 
       - name: Compile Java files
-        run: javac -d out src/*.java
+        run: |
+          mkdir out
+          javac -cp "lib/*" -d out $(find src -name "*.java")
 
       - name: Run tests
         run: |
-          java -jar lib/junit-platform-console-standalone.jar \
+          java -jar lib/junit.jar \
           --class-path out \
           --scan-class-path
