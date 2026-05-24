@@ -1,167 +1,132 @@
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
-import java.util.Scanner;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 public class Message {
 
-    Random random = new Random();
-    Scanner scanner = new Scanner(System.in);
+    public String recipientNumber;
+    public String message;
+    public String ID = "";
+    public String messageHash;
+    public int currentMessageCount = 0;
+    public int choice;
+    public int subChoice;
 
-    String recipientNumber;
-    String[] message;
-    String ID = "";
-    String messageHash;
-    int currentMessageCount;
-    String hashMessage = "";
-
-    private String checkMessageID() {
-        ID = "";
+    // Generates Random 10 Digit ID number
+    public String generatedID() {
+        Random random = new Random();
+        String ID = "";
 
         for (int i = 0; i < 10; i++) {
-            ID = ID + random.nextInt(10);
+            ID += random.nextInt(10);
         }
-
         return ID;
     }
 
-    private boolean checkRecipientCell(String recipientNumber) {
+    // Ensures recipient number meets format
+    public boolean checkRecipientCell(String recipientNumber) {
         return recipientNumber.matches("\\+27\\d{9}") || recipientNumber.matches("0\\d{9}");
     }
 
-    private static String generateMessageHash(String messageID, int count, String message) {
-        String[] words = message.trim().split("\\s+");
-        String first = words.length > 0 ? words[0] : "";
-        String last = words.length > 1 ? words[words.length - 1] : first;
-
-        return messageID.substring(0, 2) + ":" + count + ":" + first.toUpperCase() + last.toUpperCase();
-    }
-
-    public void sentMessage() {
-
-        while (true) {
-
-            System.out.println("Welcome to Quick Chat");
-            System.out.println("Select transaction");
-
-            System.out.println("Option 1 - Select QuickChat");
-            System.out.println("Option 2 - Send QuickChat");
-            System.out.println("Option 3 - Quit");
-
-            System.out.println("Enter your choice(1,2, or 3): ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (choice) {
-
-                case 1:
-                    System.out.println("You Selected: Select QuickChat");
-                    System.out.println("This feature coming soon");
-                    break;
-
-                case 2:
-
-                    System.out.println("You Selected: Send QuickChat");
-
-                    System.out.println("Enter total number of messages you wish to send");
-                    currentMessageCount = scanner.nextInt();
-                    scanner.nextLine();
-
-                    message = new String[currentMessageCount];
-
-                    do {
-                        System.out.println("Enter recipient number (must start with +27 and be exactly 12 characters)");
-                        recipientNumber = scanner.nextLine();
-
-                    } while (!checkRecipientCell(recipientNumber));
-
-                    for (int i = 0; i < currentMessageCount; i++) {
-
-                        System.out.println("Enter your QuickChat (must be 250 characters or less): ");
-                        message[i] = scanner.nextLine();
-
-                        if (message[i].length() > 250) {
-                            System.out.println("Please enter a message of less than 250 characters.");
-                        } else {
-                            System.out.println("Message sent");
-                        }
-                    }
-
-                    ID = checkMessageID();
-
-                    hashMessage = message[0];
-
-                    messageHash = generateMessageHash(ID, currentMessageCount, hashMessage);
-
-                    printMessage();
-
-                    System.out.println("Choose an option");
-                    System.out.println("Press 1 - Send QuickChat");
-                    System.out.println("Press 0 - Disregard QuickChat");
-                    System.out.println("Press 2 - Store QuickChat to send later");
-
-                    int subChoice = scanner.nextInt();
-
-                    scanner.nextLine();
-
-                    switch (subChoice) {
-
-                        case 1:
-                            System.out.println("Message sent and stored");
-                            break;
-
-                        case 0:
-                            System.out.println("Message discarded");
-                            break;
-
-                        case 2:
-                            storeMessage(ID, recipientNumber, message, messageHash);
-                            break;
-
-                        default:
-                            System.out.println("invalid option");
-                    }
-
-                    break;
-
-                case 3:
-                    return;
-            }
-        }
-    }
-
-    private void printMessage() {
-
-        System.out.println("Message ID: " + ID);
-        System.out.println("Message Hash: " + messageHash);
-        System.out.println("Recipient: " + recipientNumber);
-
-        for (int i = 0; i < currentMessageCount; i++) {
-            System.out.println("Message " + (i + 1) + ": " + message[i]);
-        }
-
-        returnTotalMessages(currentMessageCount);
-    }
-
-    private int returnTotalMessages(int currentMessageCount) {
+    public int returnTotalMessages(int currentMessageCount) {
         return currentMessageCount;
     }
 
-    private void storeMessage(String ID, String recipientNumber, String[] message, String hash) {
+    // Generates message hash
+    public static String generateMessageHash(String ID, String message, int currentMessageCount) {
+        String firstTwoID = ID.substring(0, 2);
 
-        Gson gson = new Gson();
+        String[] words = message.trim().split("\\s+");
+        String firstWord = words[0];
+        String lastWord = words[words.length - 1];
 
-        String json =
-                "{"
-                        + "\"ID\":" + gson.toJson(ID) + ","
-                        + "\"recipientNumber\":" + gson.toJson(recipientNumber) + ","
-                        + "\"message\":" + gson.toJson(message) + ","
-                        + "\"hash\":" + gson.toJson(hash)
-                        + "}";
+        String combinedWords =
+                (firstWord + lastWord).replaceAll("[^a-zA-Z]", "").toUpperCase();
 
-        try (FileWriter writer = new FileWriter("messages.json", true)) {
-            writer.write(json + "\n");
+        return firstTwoID + ":" + currentMessageCount + ":" + combinedWords;
+    }
+
+
+    public String sentMessage(int subChoice) {
+
+        if (subChoice == 1) {
+            return printMessage(ID, messageHash, recipientNumber, currentMessageCount, message);
+
+        } else if (subChoice == 0) {
+            return "Message discarded";
+
+        } else if (subChoice == 2) {
+            storeMessage(ID, recipientNumber, message, messageHash);
+            return "Message successfully stored";
+
+        } else {
+            return "Invalid option";
+        }
+    }
+
+
+    public String printMessage(String ID, String messageHash,
+                               String recipientNumber,
+                               int currentMessageCount,
+                               String message) {
+
+        String display = "";
+
+        display += "Message ID: " + ID + "\n";
+        display += "Message Hash: " + messageHash + "\n";
+        display += "Recipient: " + recipientNumber + "\n";
+        display += returnTotalMessages(currentMessageCount) + "\n";
+
+        for (int i = 0; i < currentMessageCount; i++) {
+            display += "Message: " + message + "\n";
+        }
+
+        return display;
+    }
+
+    // FIXED storeMessage (inside class)
+    public void storeMessage(String ID, String recipientNumber,
+                             String message, String hash) {
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        File file = new File("storedMessage.json");
+
+        try {
+            JsonArray array;
+
+            if (file.exists() && file.length() != 0) {
+                try (FileReader reader = new FileReader(file)) {
+                    array = gson.fromJson(reader, JsonArray.class);
+                    if (array == null) array = new JsonArray();
+                }
+            } else {
+                array = new JsonArray();
+            }
+
+            JsonObject obj = new JsonObject();
+            obj.addProperty("ID", ID);
+            obj.addProperty("recipientNumber", recipientNumber);
+
+            JsonArray msgArray = new JsonArray();
+            msgArray.add(message);
+
+            obj.add("message", msgArray);
+            obj.addProperty("hash", hash);
+
+            array.add(obj);
+
+            try (FileWriter writer = new FileWriter(file)) {
+                gson.toJson(array, writer);
+            }
+
+            System.out.println("Message stored successfully in JSON file.");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
