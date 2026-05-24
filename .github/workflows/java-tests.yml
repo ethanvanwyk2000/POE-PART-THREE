@@ -1,4 +1,4 @@
-name: Java Unit Tests
+name: Java Unit Tests (Non-Maven)
 
 on:
   push:
