@@ -1,0 +1,44 @@
+Manifest-Version: 1.0
+Build-Date: 2025-09-30
+Build-Revision: 8545c93a9d86ef7f9c848c0eca4ec792f4e82a37
+Build-Time: 09:14:43.001+0200
+Built-By: JUnit Team
+Bundle-ManifestVersion: 2
+Bundle-Name: JUnit Platform Commons
+Bundle-SymbolicName: junit-platform-commons
+Bundle-Version: 1.14.0
+Created-By: 21.0.8 (Eclipse Adoptium 21.0.8+9-LTS)
+Export-Package: org.junit.platform.commons;version="1.14.0";status=STABL
+ E;uses:="org.apiguardian.api,org.junit.platform.commons.util",org.junit
+ .platform.commons.annotation;version="1.14.0";status=STABLE;uses:="org.
+ apiguardian.api",org.junit.platform.commons.function;version="1.14.0";s
+ tatus=MAINTAINED;uses:="org.apiguardian.api",org.junit.platform.commons
+ .io;version="1.14.0";status=MAINTAINED;uses:="org.apiguardian.api",org.
+ junit.platform.commons.logging;version="1.14.0";status=INTERNAL;mandato
+ ry:=status;uses:="org.apiguardian.api",org.junit.platform.commons.suppo
+ rt;version="1.14.0";status=MAINTAINED;uses:="org.apiguardian.api,org.ju
+ nit.platform.commons,org.junit.platform.commons.function,org.junit.plat
+ form.commons.io",org.junit.platform.commons.support.conversion;version=
+ "1.14.0";status=MAINTAINED;uses:="org.apiguardian.api,org.junit.platfor
+ m.commons",org.junit.platform.commons.support.scanning;version="1.14.0"
+ ;status=MAINTAINED;uses:="org.apiguardian.api,org.junit.platform.common
+ s.io,org.junit.platform.commons.support",org.junit.platform.commons.uti
+ l;version="1.14.0";status=DEPRECATED;uses:="org.apiguardian.api,org.jun
+ it.platform.commons,org.junit.platform.commons.function,org.junit.platf
+ orm.commons.io,org.junit.platform.commons.support.scanning"
+Implementation-Title: junit-platform-commons
+Implementation-Vendor: junit.org
+Implementation-Version: 1.14.0
+Import-Package: org.apiguardian.api;resolution:=optional;version="[1.1,2
+ )",org.junit.platform.commons;version="[1.14,2)",org.junit.platform.com
+ mons.function;version="[1.14,2)",org.junit.platform.commons.io;version=
+ "[1.14,2)",org.junit.platform.commons.support;version="[1.14,2)",org.ju
+ nit.platform.commons.support.scanning;version="[1.14,2)",org.junit.plat
+ form.commons.util;version="[1.14,2)",org.junit.platform.commons.logging
+ ;status=INTERNAL;version="[1.14,2)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: junit-platform-commons
+Specification-Vendor: junit.org
+Specification-Version: 1.14.0
+Multi-Release: true
+

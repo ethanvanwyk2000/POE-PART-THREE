@@ -1,0 +1,48 @@
+Manifest-Version: 1.0
+Build-Date: 2025-09-30
+Build-Revision: 8545c93a9d86ef7f9c848c0eca4ec792f4e82a37
+Build-Time: 09:14:43.001+0200
+Built-By: JUnit Team
+Bundle-ManifestVersion: 2
+Bundle-Name: JUnit Jupiter API
+Bundle-SymbolicName: junit-jupiter-api
+Bundle-Version: 5.14.0
+Created-By: 21.0.8 (Eclipse Adoptium 21.0.8+9-LTS)
+Export-Package: org.junit.jupiter.api;version="5.14.0";status=STABLE;u
+ ses:="kotlin,kotlin.jvm.functions,kotlin.jvm.internal,org.apiguardian
+ .api,org.junit.jupiter.api.extension,org.junit.jupiter.api.function,o
+ rg.junit.jupiter.api.parallel,org.junit.platform.commons.annotation,o
+ rg.opentest4j",org.junit.jupiter.api.condition;version="5.14.0";statu
+ s=STABLE;uses:="org.apiguardian.api,org.junit.jupiter.api.extension",
+ org.junit.jupiter.api.extension;version="5.14.0";status=STABLE;uses:=
+ "org.apiguardian.api,org.junit.jupiter.api,org.junit.jupiter.api.func
+ tion,org.junit.jupiter.api.parallel,org.junit.platform.commons",org.j
+ unit.jupiter.api.extension.support;version="5.14.0";status=STABLE;use
+ s:="org.apiguardian.api,org.junit.jupiter.api.extension",org.junit.ju
+ piter.api.function;version="5.14.0";status=STABLE;uses:="org.apiguard
+ ian.api",org.junit.jupiter.api.io;version="5.14.0";status=STABLE;uses
+ :="org.apiguardian.api,org.junit.jupiter.api.extension",org.junit.jup
+ iter.api.parallel;version="5.14.0";status=STABLE;uses:="org.apiguardi
+ an.api"
+Implementation-Title: junit-jupiter-api
+Implementation-Vendor: junit.org
+Implementation-Version: 5.14.0
+Import-Package: org.apiguardian.api;resolution:=optional;version="[1.1
+ ,2)",org.junit.platform.commons.logging;status=INTERNAL;version="[1.1
+ 4,2)",kotlin;resolution:=optional,kotlin.collections;resolution:=opti
+ onal,kotlin.jvm.functions;resolution:=optional,kotlin.jvm.internal;re
+ solution:=optional,org.junit.jupiter.api;version="[5.14,6)",org.junit
+ .jupiter.api.extension;version="[5.14,6)",org.junit.jupiter.api.funct
+ ion;version="[5.14,6)",org.junit.jupiter.api.parallel;version="[5.14,
+ 6)",org.junit.platform.commons;version="[1.14,2)",org.junit.platform.
+ commons.annotation;version="[1.14,2)",org.junit.platform.commons.func
+ tion;version="[1.14,2)",org.junit.platform.commons.support;version="[
+ 1.14,2)",org.junit.platform.commons.util;version="[1.14,2)",org.opent
+ est4j;version="[1.3,2)"
+Require-Capability: org.junit.platform.engine;filter:="(&(org.junit.pl
+ atform.engine=junit-jupiter)(version>=5.14.0)(!(version>=6)))";effect
+ ive:=active,osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: junit-jupiter-api
+Specification-Vendor: junit.org
+Specification-Version: 5.14.0
+
