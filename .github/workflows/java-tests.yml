@@ -1,4 +1,4 @@
-name: Java Tests with Gson + JUnit
+name: Java Tests
 
 on:
   push:
@@ -26,4 +26,4 @@ jobs:
         run: |
           java -jar lib/junit.jar \
           --class-path out \
-          --scan-class-pathh
+          --scan-class-path
