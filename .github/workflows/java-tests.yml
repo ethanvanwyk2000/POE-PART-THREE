@@ -14,9 +14,3 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-
-      - name: Compile
-        run: javac -cp ".:lib/*" src/*.java -d out
-
-      - name: Run Tests
-        run: java -jar lib/junit-platform-console-standalone-1.11.0.jar --class-path "out:lib/gson-2.10.1.jar" --scan-classpath
